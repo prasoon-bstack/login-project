@@ -64,3 +64,9 @@ login-project/
 - HTTP Basic Auth credentials are cached by the browser
 - To logout, you need to close the browser or clear credentials
 - For production use, consider using HTTPS and more secure authentication methods
+
+## Deploying to Netlify
+
+Netlify serves the `public` folder as static files and does not run `server.js`. On Netlify, the login is handled by the edge function in `netlify/edge-functions/basic-auth.ts`. It protects `/dashboard` and `/dashboard.html` with the same HTTP Basic Auth popup.
+
+The credentials default to `admin` / `password`. To change them, set the `BASIC_AUTH_USERNAME` and `BASIC_AUTH_PASSWORD` environment variables in the Netlify UI.
