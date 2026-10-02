@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Login Project</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="card success">
+      <h1>🎉 Successfully Logged In!</h1>
+      <p>Welcome to your dashboard. You have successfully authenticated using HTTP Basic Auth.</p>
+      
+      <div class="dashboard-content">
+        <h2>Dashboard Features:</h2>
+        <ul>
+          <li>✅ Secure authentication</li>
+          <li>✅ Chrome native popup</li>
+          <li>✅ Protected routes</li>
+          <li>✅ Session management</li>
+        </ul>
+      </div>
+      
+      <div class="actions">
+        <a href="/" class="btn btn-secondary">Back to Home</a>
+        <button onclick="logout()" class="btn btn-danger">Logout</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function logout() {
+      // To logout from HTTP Basic Auth, we need to send invalid credentials
+      fetch('/dashboard', {
+        method: 'GET',
+        headers: {
+          'Authorization': 'Basic ' + btoa('logout:logout')
+        }
+      }).then(() => {
+        alert('Logged out! You will need to re-enter credentials.');
+        window.location.href = '/';
+      });
+    }
+  </script>
+</body>
+</html>
